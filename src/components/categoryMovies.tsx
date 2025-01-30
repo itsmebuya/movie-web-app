@@ -16,7 +16,7 @@ type Content = {
 }
 
 export const CategoryMovies = (props: Content) => {
-    const {section , type} = props;
+    const { section, type } = props;
     const [movies, setMovies] = useState<Movie[]>([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState("");
@@ -35,10 +35,7 @@ export const CategoryMovies = (props: Content) => {
                 if (!response.ok) {
                     throw new Error(`Failed to fetch ${section} movies`);
                 }
-
                 const data = await response.json();
-                console.log(data);
-
                 setMovies(data.results);
             } catch (error: unknown) {
                 if (error instanceof Error) {
@@ -81,7 +78,7 @@ export const CategoryMovies = (props: Content) => {
                             />
                             <div className="p-2">
                                 <div className="flex gap-1 items-center">
-                                    <StarIcon/>
+                                    <StarIcon />
                                     <p className="text-sm font-medium text-[#09090B] dark:text-white">{Math.round(movie.vote_average * 10) / 10}<span className="text-[#71717A] text-xs font-normal">/10</span></p>
                                 </div>
                                 <p className="text-lg font-normal text-[#09090B] dark:text-white">{movie.title}</p>

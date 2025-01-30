@@ -3,9 +3,10 @@ type HeaderProps = {
 }
 
 import FilmSvg from "@/assets/svg/filmSvg"
-import Search from "./Search"
+import Search from "./ui/Search"
 import { DropdownMenu } from "@radix-ui/react-dropdown-menu"
-import { ModeToggle } from "./themeButton"
+import { ModeToggle } from "./ui/themeButton"
+import { GenreButton } from "./ui/genreButton"
 
 export const Header = (props: HeaderProps) => {
     const { color } = props
@@ -17,7 +18,7 @@ export const Header = (props: HeaderProps) => {
                 <p className={`text-[#4338CA] italic font-bold text-base`}>Movie Z</p>
             </div>
             <div className="flex gap-3">
-                <DropdownMenu />
+                <GenreButton/>
                 <Search />
             </div>
             <ModeToggle />

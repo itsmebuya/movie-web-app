@@ -1,8 +1,9 @@
 'use client'
 
-import { Footer } from "@/components/ui/Footer";
-import { Header } from "@/components/ui/Header";
-import { CategoryMovies } from "@/components/ui/categoryMovies";
+import { Footer } from "@/components/Footer";
+import { Header } from "@/components/Header";
+import { NowPlaying } from "@/components/NowPlaying";
+import { CategoryMovies } from "@/components/categoryMovies";
 
 export default function Home() {
 
@@ -10,6 +11,9 @@ export default function Home() {
     <div>
       <div className="flex justify-center">
         <Header color={"#4338CA"} />
+      </div>
+      <div className="w-full ">
+        <NowPlaying />
       </div>
       <div className="flex flex-col justify-center items-center">
         <CategoryMovies section="Upcoming" type="upcoming" />
