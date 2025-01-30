@@ -1,6 +1,17 @@
 'use client'
 
 import { useEffect, useState } from "react"
+import {
+    DropdownMenu,
+    DropdownMenuContent,
+    DropdownMenuItem,
+    DropdownMenuLabel,
+    DropdownMenuSeparator,
+    DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu"
+
+import { Button } from "./button"
+
 
 type Genres = {
     id: number
@@ -38,9 +49,29 @@ export const GenreButton = () => {
 
     return (
         <div>
-            {genre.map((el) => (
-                <div key={el.id}>{el.name}</div>
-            ))}
+
+            <DropdownMenu>
+                <DropdownMenuTrigger>Genre</DropdownMenuTrigger>
+                <DropdownMenuContent>
+                    <DropdownMenuLabel>
+                        <h1>Genres</h1>
+                        <p>See lists of movies by genre</p>
+                    </DropdownMenuLabel>
+                    <DropdownMenuSeparator />
+                    <DropdownMenuItem>
+                        {genre.map((el) => (
+                            <div key={el.id} className="">
+                                <Button>
+                                {el.name}
+                                </Button>
+                            
+                            
+                            </div>
+                        ))}
+                    </DropdownMenuItem>
+                </DropdownMenuContent>
+            </DropdownMenu>
         </div>
+
     )
 }
