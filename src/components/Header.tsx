@@ -4,7 +4,6 @@ type HeaderProps = {
 
 import FilmSvg from "@/assets/svg/filmSvg"
 import Search from "./ui/Search"
-import { DropdownMenu } from "@radix-ui/react-dropdown-menu"
 import { ModeToggle } from "./ui/themeButton"
 import { GenreButton } from "./ui/genreButton"
 

@@ -11,6 +11,7 @@ import {
 } from "@/components/ui/dropdown-menu"
 
 import { Button } from "./button"
+import { ChevronDown } from "lucide-react"
 
 
 type Genres = {
@@ -47,25 +48,26 @@ export const GenreButton = () => {
 
     console.log(genre)
 
+
     return (
         <div>
-
             <DropdownMenu>
-                <DropdownMenuTrigger>Genre</DropdownMenuTrigger>
-                <DropdownMenuContent>
+                <DropdownMenuTrigger className="flex py-2 px-4 border rounded-md gap-2 items-center justify-center ">
+                    <ChevronDown/>
+                    <p>Genre</p>
+                </DropdownMenuTrigger>
+                <DropdownMenuContent className="w-[400px] h-fit">
                     <DropdownMenuLabel>
-                        <h1>Genres</h1>
-                        <p>See lists of movies by genre</p>
+                        <p className="text-[#09090B] font-semibold text-2xl leading-8 dark:text-white">Genres</p>
+                        <p className="text-base text-[#09090B] font-normal leading-6 dark:text-white">See lists of movies by genre</p>
                     </DropdownMenuLabel>
                     <DropdownMenuSeparator />
-                    <DropdownMenuItem>
+                    <DropdownMenuItem className="flex flex-wrap ">
                         {genre.map((el) => (
                             <div key={el.id} className="">
                                 <Button>
-                                {el.name}
+                                    {el.name}
                                 </Button>
-                            
-                            
                             </div>
                         ))}
                     </DropdownMenuItem>

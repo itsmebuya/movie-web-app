@@ -1,6 +1,7 @@
 'use client'
 
 import StarIcon from "@/assets/icons/starIcon";
+import { ArrowRight } from "lucide-react";
 import { useState, useEffect } from "react";
 
 type Movie = {
@@ -63,7 +64,11 @@ export const CategoryMovies = (props: Content) => {
         <div className="max-w-7xl mx-20 flex flex-col items-center">
             <div className="flex justify-between w-full">
                 <p className="#09090B text-2xl font-semibold">{section}</p>
-                <div>see more</div>
+                <div className="flex gap-2 py-2 px-4 cursor-pointer items-center justify-center">
+                    <p className="font-medium text-sm">See more</p>
+                    <ArrowRight/>
+                    
+                </div>
             </div>
             <ul className="flex  gap-8  grid lg:grid-cols-5 md:grid-cols-4 sm:grid-cols-3 mt-8 mb-[52px]">
                 {movies.slice(0, 10).map((movie) => (
