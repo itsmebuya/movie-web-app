@@ -67,7 +67,6 @@ export const CategoryMovies = (props: Content) => {
                 <div className="flex gap-2 py-2 px-4 cursor-pointer items-center justify-center">
                     <p className="font-medium text-sm">See more</p>
                     <ArrowRight/>
-                    
                 </div>
             </div>
             <ul className="flex  gap-8  grid lg:grid-cols-5 md:grid-cols-4 sm:grid-cols-3 mt-8 mb-[52px]">
@@ -88,8 +87,6 @@ export const CategoryMovies = (props: Content) => {
                                 </div>
                                 <p className="text-lg font-normal text-[#09090B] dark:text-white">{movie.title}</p>
                             </div>
-
-
                         </li>
                     </div>
                 ))}
