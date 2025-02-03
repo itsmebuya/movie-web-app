@@ -46,9 +46,6 @@ export const GenreButton = () => {
         fetchGenre();
     }, [])
 
-    console.log(genre)
-
-
     return (
         <div>
             <DropdownMenu>

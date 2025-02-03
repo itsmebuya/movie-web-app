@@ -3,6 +3,7 @@
 import StarIcon from "@/assets/icons/starIcon";
 import { ArrowRight } from "lucide-react";
 import { useState, useEffect } from "react";
+import { getCategoryMovies } from "@/utils/requests";
 
 type Movie = {
     title: string
@@ -24,21 +25,16 @@ export const CategoryMovies = (props: Content) => {
 
     const API_KEY = process.env.NEXT_PUBLIC_TMDB_API_KEY;
     const TMDB_BASE_URL = process.env.NEXT_PUBLIC_TMDB_BASE_URL;
-    const TMDB_IMAGE_URL = process.env.NEXT_PUBLIC_TMDB_IMAGE_SERVICE_URL;
 
     useEffect(() => {
-        const fetchMovies = async () => {
+        const fetchMovies = async (page = 1) => {
+            setLoading(true);
+    
             try {
-                const response = await fetch(
-                    `${TMDB_BASE_URL}/movie/${type}?api_key=${API_KEY}&language=en-US&page=1`
-                );
-
-                if (!response.ok) {
-                    throw new Error(`Failed to fetch ${section} movies`);
-                }
-                const data = await response.json();
-                setMovies(data.results);
-            } catch (error: unknown) {
+                const fetchMoviesFunc = await getCategoryMovies(type, page );
+                setMovies(fetchMoviesFunc.results);
+        
+            } catch (error) {
                 if (error instanceof Error) {
                     setError(error.message || "An unknown error occurred.");
                 } else {
@@ -78,7 +74,7 @@ export const CategoryMovies = (props: Content) => {
                                 alt={movie.title}
                                 width={230}
                                 height={240}
-                                className="rounded-lg"
+                                className="rounded-lg object-cover"
                             />
                             <div className="p-2">
                                 <div className="flex gap-1 items-center">
