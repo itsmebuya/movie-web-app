@@ -5,17 +5,21 @@ type FooterProps = {
 import MessageIcon from "@/assets/icons/messageIcon"
 import PhoneIcon from "@/assets/icons/phoneIcon"
 import FilmSvg from "@/assets/svg/filmSvg"
+import Link from "next/link"
 
-export const Footer = (props:FooterProps ) => {
-    const {color} = props
+export const Footer = (props: FooterProps) => {
+    const { color } = props
 
     return <div className="flex justify-center w-full py-10 px-5 bg-[#4338CA] ">
         <div className="flex justify-between w-full gap-32 mx-[10%]">
             <div className="flex flex-col gap-3">
-                <div className="flex gap-2 items-center cursor-pointer">
-                    <FilmSvg color={color} />
-                    <p className={`text-[${color}] text-base italic font-bold`}>Movie Z</p>
-                </div>
+                <Link href={"/"}>
+                    <div className="flex gap-2 items-center cursor-pointer">
+                        <FilmSvg color={color} />
+                        <p className={`text-[${color}] text-base italic font-bold`}>Movie Z</p>
+                    </div>
+                </Link>
+
                 <div className="text-[#FAFAFA]">© 2024 Movie Z. All Rights Reserved.</div>
             </div>
             <div className="flex gap-24 ">

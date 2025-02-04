@@ -59,31 +59,31 @@ export const NowPlaying = (props: Content) => {
                     {
                         movies.map((movie) => (
                             <CarouselItem key={movie.id} className="relative ">
-                                    <img
-                                        src={`https://image.tmdb.org/t/p/original${movie.backdrop_path}`}
-                                        alt={movie.title}
-                                        className="w-[100%] h-[600px] object-cover"
-                                    />
-                                    <div className="flex flex-col absolute left-[200px] top-[150px] gap-1 w-[300px]">
-                                        <p className="text-base leading-6 text-white">Now Playing:</p>
-                                        <p className="text-4xl leading-10 font-bold text-white">{movie.title}</p>
-                                        <div className="flex gap-1 items-center">
-                                            <StarIcon />
-                                            <p className="text-sm font-medium text-white">{Math.round(movie.vote_average * 10) / 10}<span className="text-[#71717A] text-xs font-normal">/10</span></p>
-                                        </div>
-                                        <p className="text-xs mb-4 text-white">{movie.overview}</p>
-                                        <Button className="w-[150px]">
-                                            <Play />
-                                            Watch Trailer
-                                        </Button>
+                                <img
+                                    src={`https://image.tmdb.org/t/p/original${movie.backdrop_path}`}
+                                    alt={movie.title}
+                                    className="w-[100%] h-[600px] object-cover"
+                                />
+                                <div className="flex flex-col absolute left-[200px] top-[150px] gap-1 w-[300px]">
+                                    <p className="text-base leading-6 text-white">Now Playing:</p>
+                                    <p className="text-4xl leading-10 font-bold text-white">{movie.title}</p>
+                                    <div className="flex gap-1 items-center">
+                                        <StarIcon />
+                                        <p className="text-sm font-medium text-white">{Math.round(movie.vote_average * 10) / 10}<span className="text-[#71717A] text-xs font-normal">/10</span></p>
                                     </div>
+                                    <p className="text-xs mb-4 text-white">{movie.overview}</p>
+                                    <Button className="w-[150px]">
+                                        <Play />
+                                        Watch Trailer
+                                    </Button>
+                                </div>
 
                             </CarouselItem>
                         ))
                     }
                 </CarouselContent>
-                <CarouselPrevious className="left-[50px] absolute"/>
-                <CarouselNext className="right-[50px] absolute"/>
+                <CarouselPrevious className="left-[50px] absolute" />
+                <CarouselNext className="right-[50px] absolute" />
             </Carousel>
         </div>
     )

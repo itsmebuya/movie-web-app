@@ -10,3 +10,7 @@ export const getCategoryMovies = async (type:string, page:number) => {
     const {data} = await instance.get(`movie/${type}?language=en-US&page=${page || 1}&api_key=${API_KEY}`);
     return data;
 };
+
+export const getSectionTitle = () => {
+    
+}

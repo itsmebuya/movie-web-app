@@ -13,7 +13,7 @@ export default function Home() {
         <Header color={"#4338CA"} />
       </div>
       <div className="w-full ">
-        <NowPlaying section="Now Playing" type="now_playing"/>
+        <NowPlaying section="Now Playing" type="now_playing" />
       </div>
       <div className="flex flex-col justify-center items-center">
         <CategoryMovies section="Upcoming" type="upcoming" />
