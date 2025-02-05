@@ -71,24 +71,27 @@ export const CategoryMovies = (props: Content) => {
             </div>
             <ul className="flex  gap-8  grid lg:grid-cols-5 md:grid-cols-4 sm:grid-cols-3 mt-8 mb-[52px]">
                 {movies.slice(0, 10).map((movie) => (
-                    <div key={movie.id} className="w-fit h-[440px] bg-[#F4F4F5] rounded-lg cursor-pointer gap-1 dark:bg-[#27272A]">
-                        <li className="flex flex-col items-start ">
-                            <img
-                                src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
-                                alt={movie.title}
-                                width={230}
-                                height={240}
-                                className="rounded-lg object-cover"
-                            />
-                            <div className="p-2">
-                                <div className="flex gap-1 items-center">
-                                    <StarIcon />
-                                    <p className="text-sm font-medium text-[#09090B] dark:text-white">{Math.round(movie.vote_average * 10) / 10}<span className="text-[#71717A] text-xs font-normal">/10</span></p>
+                    <Link key={movie.id} href={`/detail/${movie.id}`}>
+                        <div className="w-fit h-[440px] bg-[#F4F4F5] rounded-lg cursor-pointer gap-1 dark:bg-[#27272A]">
+                            <li className="flex flex-col items-start ">
+                                <img
+                                    src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
+                                    alt={movie.title}
+                                    width={230}
+                                    height={240}
+                                    className="rounded-lg object-cover"
+                                />
+                                <div className="p-2">
+                                    <div className="flex gap-1 items-center">
+                                        <StarIcon />
+                                        <p className="text-sm font-medium text-[#09090B] dark:text-white">{Math.round(movie.vote_average * 10) / 10}<span className="text-[#71717A] text-xs font-normal">/10</span></p>
+                                    </div>
+                                    <p className="text-lg font-normal text-[#09090B] dark:text-white">{movie.title}</p>
                                 </div>
-                                <p className="text-lg font-normal text-[#09090B] dark:text-white">{movie.title}</p>
-                            </div>
-                        </li>
-                    </div>
+                            </li>
+                        </div>
+                    </Link>
+
                 ))}
             </ul>
         </div>
