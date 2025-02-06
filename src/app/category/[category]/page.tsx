@@ -16,7 +16,7 @@ export default function Category() {
                 <Header color={"#4338CA"} />
             </div>
             <div className="flex flex-col justify-center items-center">
-                <CategorySection type={params.category as string}/>
+                <CategorySection type={params.category as string} section={""}/>
             </div>
             <Footer color={"#FAFAFA"} />
         </div>

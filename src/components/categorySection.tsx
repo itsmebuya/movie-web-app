@@ -3,17 +3,8 @@
 import { getCategoryMovies, getSectionTitle } from "@/utils/requests"
 import { useEffect, useState } from "react"
 import StarIcon from "@/assets/icons/starIcon"
+import { Content, Movie } from "@/type"
 
-type Content = {
-    type: string
-}
-type Movie = {
-    title: string
-    vote_average: number
-    id: number
-    poster_path: string
-    error: string
-}
 
 export const CategorySection = (props: Content) => {
     const { type } = props;

@@ -20,7 +20,6 @@ export default function Home() {
         <CategoryMovies section="Popular" type="popular" />
         <CategoryMovies section="Top Rated" type="top_rated" />
       </div>
-
       <Footer color={"#FAFAFA"} />
     </div>
   );

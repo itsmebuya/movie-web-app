@@ -6,19 +6,7 @@ import StarIcon from "@/assets/icons/starIcon";
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
 import { Button } from "./ui/button";
 import { Play } from "lucide-react";
-
-type Movie = {
-    title: string
-    vote_average: number
-    id: number
-    backdrop_path: string
-    error: string
-    overview: string
-}
-type Content = {
-    section: string
-    type: string
-}
+import { Content, Movie } from "@/type";
 
 export const NowPlaying = (props: Content) => {
     const { section, type } = props;

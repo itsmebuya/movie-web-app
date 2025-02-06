@@ -5,18 +5,7 @@ import { ArrowRight } from "lucide-react";
 import { useState, useEffect } from "react";
 import { getCategoryMovies } from "@/utils/requests";
 import Link from "next/link";
-
-type Movie = {
-    title: string
-    vote_average: number
-    id: number
-    poster_path: string
-    error: string
-}
-type Content = {
-    section: string
-    type: string
-}
+import { Content, Movie } from "@/type";
 
 export const CategoryMovies = (props: Content) => {
     const { section, type } = props;

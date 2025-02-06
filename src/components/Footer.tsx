@@ -1,13 +1,10 @@
-type FooterProps = {
-    color: string
-}
-
 import MessageIcon from "@/assets/icons/messageIcon"
 import PhoneIcon from "@/assets/icons/phoneIcon"
 import FilmSvg from "@/assets/svg/filmSvg"
+import { Color } from "@/type"
 import Link from "next/link"
 
-export const Footer = (props: FooterProps) => {
+export const Footer = (props: Color) => {
     const { color } = props
 
     return <div className="flex justify-center w-full py-10 px-5 bg-[#4338CA] ">

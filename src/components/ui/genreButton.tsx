@@ -9,15 +9,10 @@ import {
     DropdownMenuSeparator,
     DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
-
 import { Button } from "./button"
 import { ChevronDown } from "lucide-react"
+import { Genres } from "@/type"
 
-
-type Genres = {
-    id: number
-    name: string
-}
 
 export const GenreButton = () => {
     const [genre, setGenre] = useState<Genres[]>([])
