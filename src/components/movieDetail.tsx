@@ -1,9 +1,10 @@
 "use client"
 
-import { getDetailMovie} from "@/utils/requests"
+import { getDetailMovie, getMovieActor } from "@/utils/requests"
 import { useEffect, useState } from "react"
-import { Movie, MovieId } from "@/type"
+import { Movie, MovieId, Genres } from "@/type"
 import { getIsAdult, getMovieDuration, getStringToDate } from "@/utils/getData"
+import StarIcon from "@/assets/icons/starIcon"
 
 export const DetailMovie = (props: MovieId) => {
     const { movieId } = props;
@@ -19,7 +20,9 @@ export const DetailMovie = (props: MovieId) => {
             setLoading(true);
             try {
                 const fetchDetail = await getDetailMovie(movieId, page);
-                console.log(fetchDetail);
+                const movieActor = await getMovieActor(movieId);
+
+                console.log(movieActor);
                 setMovie(fetchDetail);
 
             } catch (error) {
@@ -52,14 +55,34 @@ export const DetailMovie = (props: MovieId) => {
                     <p className="text-4xl font-bold leading-10">{movie.title}</p>
                     <p className="text-lg leading-7 font-normal">{getStringToDate(movie.release_date)} · {getIsAdult(movie.adult)} · {getMovieDuration(movie.runtime)}</p>
                 </div>
-                <div>
-                    <p>Rating</p>
-                    <div></div>
+                <div className="flex flex-col gap-1 justify-start items-center">
+                    <p className="font-medium text-xs">Rating</p>
+                    <div className="flex gap-1 items-center justify-start">
+                        <StarIcon />
+                        <div className="flex flex-col">
+                            <p className="text-sm font-medium text-[#09090B] dark:text-white">{Math.round(movie.vote_average * 10) / 10}<span className="text-[#71717A] text-xs font-normal">/10</span></p>
+                            <p className="text-[#71717A] text-xs">{movie.vote_count}</p>
+                        </div>
+                    </div>
                 </div>
             </div>
-            <div className="flex gap-6">
-                <img src={`https://image.tmdb.org/t/p/original${movie.poster_path}`} alt={movie.title} className="w-[288px] object-cover"/>
-                <img src={`https://image.tmdb.org/t/p/original${movie.backdrop_path}`} alt={movie.title} className="w-[760px] object-cover" />
+            <div className="flex gap-8 mb-[30px]">
+                <div className="w-30%">
+                    
+                <img src={`https://image.tmdb.org/t/p/original${movie.poster_path}`} alt={movie.title} className="w-full object-cover rounded" />
+                </div>
+                <div className="w-70%">
+
+                <img src={`https://image.tmdb.org/t/p/original${movie.backdrop_path}`} alt={movie.title} className="w-full h-full object-cover rounded" />
+                </div>
+            </div>
+            <div className="flex flex-col gap-5">
+                <div className="flex flex-start gap-3">
+                    {movie.genres.map((genre: Genres) => (
+                        <div key={genre.id} className="py-0.5 px-2.5 rounded-full border border-[#E4E4E7]">{genre.name}</div>
+                    ))}
+                </div>
+                <p className="text-base leading-6">{movie.overview}</p>
             </div>
         </div>
     )

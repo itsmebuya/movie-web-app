@@ -19,3 +19,8 @@ export const getDetailMovie = async (movieId: string, page: number) => {
     const { data } = await instance.get(`/movie/${movieId}?language=en-US&page=${page || 1}&api_key=${API_KEY}`);
     return data
 }
+
+export const getMovieActor = async (movieId: string) => {
+    const {data} = await instance.get(`movie/${movieId}/credits?language=en-US&api_key=${API_KEY}`);
+    return data
+}

@@ -10,7 +10,7 @@ export const CategorySection = (props: Content) => {
     const { type } = props;
     const sectionTitle = getSectionTitle(type);
     const [movies, setMovies] = useState<Movie[]>([])
-    const [loading, setLoading] = useState(true);
+    const [loading, setLoading] = useState(false);
     const [error, setError] = useState("");
 
     const API_KEY = process.env.NEXT_PUBLIC_TMDB_API_KEY;
