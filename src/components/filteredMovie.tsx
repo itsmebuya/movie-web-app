@@ -7,6 +7,7 @@ export const FilteredMovie = () => {
     const [movies, setMovies] = useState<Movie[]>([])
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState("");
+    const count = 1
 
     const API_KEY = process.env.NEXT_PUBLIC_TMDB_API_KEY;
     const TMDB_BASE_URL = process.env.NEXT_PUBLIC_TMDB_BASE_URL;
@@ -41,7 +42,14 @@ export const FilteredMovie = () => {
 
     return (
         <div>
-
+            <p>{count} titles</p>
+            <ul>
+                {movies.map((movie) => (
+                    <div key={movie.id}>
+                        
+                    </div>
+                ))}
+            </ul>
         </div>
     )
 }

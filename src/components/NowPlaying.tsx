@@ -20,10 +20,13 @@ export const NowPlaying = (props: Content) => {
             try {
                 const getMovie = await getCategoryMovies(type, page);
                 setMovies(getMovie.results)
-                console.log(getMovie);
-
+                // console.log(getMovie);
             } catch (error) {
-
+                if (error instanceof Error) {
+                    setError(error.message || "An unknown error occurred.");
+                } else {
+                    setError("An unknown error occurred.");
+                }
             }
             finally {
                 setLoading(false);
