@@ -1,6 +1,7 @@
 'use client'
 
-import { getCategoryMovies, getSectionTitle } from "@/utils/requests"
+import { getCategoryMovies } from "@/utils/requests"
+import { getSectionTitle } from "@/utils/getData"
 import { useEffect, useState } from "react"
 import StarIcon from "@/assets/icons/starIcon"
 import { Content, Movie } from "@/type"

@@ -1,6 +1,8 @@
 'use client'
 
 import { Movie } from "@/type";
+import { getFilteredMovies } from "@/utils/requests";
+import { useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
 
 export const FilteredMovie = () => {
@@ -8,16 +10,22 @@ export const FilteredMovie = () => {
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState("");
     const count = 1
+    const searchParams = useSearchParams()
 
+   const selectedGenreIds =  searchParams.get("genreslds") || [""]
+   console.log({selectedGenreIds});
+   
     const API_KEY = process.env.NEXT_PUBLIC_TMDB_API_KEY;
     const TMDB_BASE_URL = process.env.NEXT_PUBLIC_TMDB_BASE_URL;
 
     useEffect(() => {
-        const fetchFiltered = async () => {
+        const fetchFiltered = async (page = 1) => {
             setLoading(true);
 
             try {
-                // const fetchFilteredMovie = await 
+                const fetchFilteredMovie = await getFilteredMovies(page, selectedGenreIds);
+                console.log(fetchFilteredMovie);
+                
 
             } catch (error) {
                 if (error instanceof Error) {
@@ -46,7 +54,7 @@ export const FilteredMovie = () => {
             <ul>
                 {movies.map((movie) => (
                     <div key={movie.id}>
-                        
+
                     </div>
                 ))}
             </ul>

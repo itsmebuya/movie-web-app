@@ -10,12 +10,14 @@ import {
     DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
 import { Button } from "./button"
-import { ChevronDown } from "lucide-react"
+import { ChevronDown, ChevronRight } from "lucide-react"
 import { Genres } from "@/type"
+import { getGenre } from "@/utils/requests"
 
 
 export const GenreButton = () => {
     const [genre, setGenre] = useState<Genres[]>([])
+    const [error, setError] = useState("");
 
     const API_KEY = process.env.NEXT_PUBLIC_TMDB_API_KEY;
     const TMDB_BASE_URL = process.env.NEXT_PUBLIC_TMDB_BASE_URL;
@@ -24,28 +26,26 @@ export const GenreButton = () => {
     const genreUrl = `https://api.themoviedb.org/3/genre/movie/list?language=en&api_key=db430a8098715f8fab36009f57dff9fb`
 
     useEffect(() => {
-        const fetchGenre = async () => {
+        const fetchGenres = async (page = 1) => {
             try {
-                const response = await fetch(genreUrl);
-
-                if (!response.ok) {
-                    throw new Error("Failed to fetch genre");
-                }
-                const data = await response.json();
-                setGenre(data.genres)
-
+                const fetchGenre = await getGenre(page);
+                setGenre(fetchGenre.genres);
             } catch (error) {
-
-            }
+                if (error instanceof Error) {
+                    setError(error.message || "An unknown error occurred.");
+                } else {
+                    setError("An unknown error occurred.");
+                }
+            } 
         }
-        fetchGenre();
+        fetchGenres();
     }, [])
 
     return (
         <div>
             <DropdownMenu>
                 <DropdownMenuTrigger className="flex py-2 px-4 border rounded-md gap-2 items-center justify-center ">
-                    <ChevronDown/>
+                    <ChevronDown />
                     <p>Genre</p>
                 </DropdownMenuTrigger>
                 <DropdownMenuContent className="w-[400px] h-fit">
@@ -57,8 +57,9 @@ export const GenreButton = () => {
                     <DropdownMenuItem className="flex flex-wrap ">
                         {genre.map((el) => (
                             <div key={el.id} className="">
-                                <Button>
+                                <Button className="py-0.5 px-2.5">
                                     {el.name}
+                                    <ChevronRight />
                                 </Button>
                             </div>
                         ))}

@@ -5,14 +5,18 @@ export const getStringToDate = (str: string) => {
 }
 
 export const getIsAdult = (el: boolean) => {
-    if(el) {return "NC"}
+    if (el) { return "NC" }
     else {
         return "PG"
     }
 }
 
 export const getMovieDuration = (minutes: number) => {
-    const hour = Math.floor(minutes/60);
-    const minute = minutes%60;
+    const hour = Math.floor(minutes / 60);
+    const minute = minutes % 60;
     return `${hour}h ${minute}m`
+}
+
+export const getSectionTitle = (str: string) => {
+    return str.split("_").map(word => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase()).join(" ");
 }
