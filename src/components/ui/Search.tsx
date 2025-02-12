@@ -25,15 +25,17 @@ const Search = () => {
                 <input type="text" placeholder="Search.." className="py-2 w-full outline-none" value={searchValue} onChange={(e) => setSearchValue(e.target.value)} />
             </div>
             <div className="absolute top-[50px] left-1/2 -translate-x-1/2 bg-red-300">
-            {movies.length > 0 && (
-                <div className="">
-                    {movies.map((el) => (
-                        <div key={el.id}>{el.title}</div>
-                    ))}
-                </div>
-            )}
+                {movies.length > 0 && (
+                    <div className="">
+                        {movies.map((el) => (
+                            <div key={el.id}>
+                                {el.title}
+                            </div>
+                        ))}
+                    </div>
+                )}
             </div>
-           
+
         </div>
 
 

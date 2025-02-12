@@ -13,17 +13,15 @@ import { Button } from "./button"
 import { ChevronDown, ChevronRight } from "lucide-react"
 import { Genres } from "@/type"
 import { getGenre } from "@/utils/requests"
+import Link from "next/link"
 
 
 export const GenreButton = () => {
     const [genre, setGenre] = useState<Genres[]>([])
     const [error, setError] = useState("");
 
-    const API_KEY = process.env.NEXT_PUBLIC_TMDB_API_KEY;
-    const TMDB_BASE_URL = process.env.NEXT_PUBLIC_TMDB_BASE_URL;
-    const TMDB_IMAGE_URL = process.env.NEXT_PUBLIC_TMDB_IMAGE_SERVICE_URL;
-
-    const genreUrl = `https://api.themoviedb.org/3/genre/movie/list?language=en&api_key=db430a8098715f8fab36009f57dff9fb`
+    // const API_KEY = process.env.NEXT_PUBLIC_TMDB_API_KEY;
+    // const TMDB_BASE_URL = process.env.NEXT_PUBLIC_TMDB_BASE_URL;
 
     useEffect(() => {
         const fetchGenres = async (page = 1) => {
@@ -36,7 +34,7 @@ export const GenreButton = () => {
                 } else {
                     setError("An unknown error occurred.");
                 }
-            } 
+            }
         }
         fetchGenres();
     }, [])
@@ -54,16 +52,19 @@ export const GenreButton = () => {
                         <p className="text-base text-[#09090B] font-normal leading-6 dark:text-white">See lists of movies by genre</p>
                     </DropdownMenuLabel>
                     <DropdownMenuSeparator />
-                    <DropdownMenuItem className="flex flex-wrap ">
+
+                    <div className=" flex flex-wrap ">
                         {genre.map((el) => (
-                            <div key={el.id} className="">
-                                <Button className="py-0.5 px-2.5">
-                                    {el.name}
-                                    <ChevronRight />
-                                </Button>
-                            </div>
+                            <DropdownMenuItem key={el.id} className="w-fit">
+                                <Link href={`/genres/`} className="w-fit">
+                                    <Button className="py-0.5 px-2.5" >
+                                        {el.name}
+                                        <ChevronRight />
+                                    </Button>
+                                </Link>
+                            </DropdownMenuItem>
                         ))}
-                    </DropdownMenuItem>
+                    </div>
                 </DropdownMenuContent>
             </DropdownMenu>
         </div>

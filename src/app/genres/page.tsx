@@ -7,22 +7,21 @@ import { SearchGenre } from "@/components/searchGenre";
 import { useParams, useRouter, useSearchParams } from "next/navigation"
 
 export default function Genre() {
+    
     // const params = useParams();
     // console.log(params);
 
-    const router = useRouter()
-    const searchParams = useSearchParams()
-    const rawGenres = searchParams.get('genres')
-    const genres = rawGenres ? rawGenres.split(',') : []
+    // const router = useRouter()
+    // const searchParams = useSearchParams()
+    // const rawGenres = searchParams.get('genres')
+    // const genres = rawGenres ? rawGenres.split(',') : []
 
-    const newGenres = () => {
-        const newParams = new URLSearchParams(searchParams);
-        // if (genres.includes('12'))
-        //     genres.push('12')
-        newParams.set('genres', genres.join(','))
+    // const newGenres = () => {
+    //     const newParams = new URLSearchParams(searchParams);
+    //     newParams.set('genres', genres.join(','))
 
-        router.push(`?${newParams.toString()}`)
-    }
+    //     router.push(`?${newParams.toString()}`)
+    // }
 
     return (
         <div>
@@ -36,7 +35,6 @@ export default function Genre() {
                     <SearchGenre />
                     <div className="border h-screen w-[1px]"></div>
                     <FilteredMovie/>
-                    {/* <button onClick={newGenres}>click me</button> */}
                 </div>
             </div>
 

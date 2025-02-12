@@ -5,18 +5,26 @@ import { Genres } from "@/type"
 import { Button } from "./ui/button"
 import { getGenre } from "@/utils/requests"
 import { ChevronRight } from "lucide-react"
+import { useRouter, useSearchParams } from "next/navigation"
 
+const API_KEY = process.env.NEXT_PUBLIC_TMDB_API_KEY;
+const TMDB_BASE_URL = process.env.NEXT_PUBLIC_TMDB_BASE_URL;
 
 export const SearchGenre = () => {
     const [genre, setGenre] = useState<Genres[]>([])
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState("");
+    const router = useRouter();
+    const searchParams = useSearchParams();
+    const genres = searchParams.get("genrelds")?.split(',') || [];
 
-    const API_KEY = process.env.NEXT_PUBLIC_TMDB_API_KEY;
-    const TMDB_BASE_URL = process.env.NEXT_PUBLIC_TMDB_BASE_URL;
-    const TMDB_IMAGE_URL = process.env.NEXT_PUBLIC_TMDB_IMAGE_SERVICE_URL;
 
-    const genreUrl = `https://api.themoviedb.org/3/genre/movie/list?language=en&api_key=db430a8098715f8fab36009f57dff9fb`
+    const handleGenreClick = (id: string) => {
+        const params = new URLSearchParams(searchParams);
+        genres.push(id)
+        params.set('genrelds', genres.join(','))
+        router.push(`?${params.toString()}`);
+    }
 
     useEffect(() => {
         const fetchGenres = async (page = 1) => {
@@ -53,7 +61,7 @@ export const SearchGenre = () => {
             </div>
             <div>
                 {genre?.map((el: Genres) => (
-                    <Button key={el.id} className="m-1 py-0.5 px-2.5">
+                    <Button key={el.id} className="m-1 py-0.5 px-2.5" onClick={() => handleGenreClick(el.id)}>
                         {el.name}
                         <ChevronRight />
                     </Button>

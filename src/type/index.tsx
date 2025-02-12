@@ -26,7 +26,7 @@ export type Color = {
 }
 
 export type Genres = {
-    id: number
+    id: string
     name: string
 }
 export type SearchProps = {

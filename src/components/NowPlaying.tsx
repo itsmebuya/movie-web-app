@@ -7,6 +7,7 @@ import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious
 import { Button } from "./ui/button";
 import { Play } from "lucide-react";
 import { Content, Movie } from "@/type";
+import Link from "next/link";
 
 export const NowPlaying = (props: Content) => {
     const { section, type } = props;
@@ -32,7 +33,6 @@ export const NowPlaying = (props: Content) => {
                 setLoading(false);
             }
         }
-
         fetchMovies();
     }, [])
 
@@ -50,11 +50,14 @@ export const NowPlaying = (props: Content) => {
                     {
                         movies.map((movie) => (
                             <CarouselItem key={movie.id} className="relative ">
-                                <img
-                                    src={`https://image.tmdb.org/t/p/original${movie.backdrop_path}`}
-                                    alt={movie.title}
-                                    className="w-[100%] h-[600px] object-cover"
-                                />
+                                <Link href={`/detail/${movie.id}`}>
+                                    <img
+                                        src={`https://image.tmdb.org/t/p/original${movie.backdrop_path}`}
+                                        alt={movie.title}
+                                        className="w-[100%] h-[600px] object-cover"
+                                    />
+                                </Link>
+
                                 <div className="flex flex-col absolute left-[200px] top-[150px] gap-1 w-[300px]">
                                     <p className="text-base leading-6 text-white">Now Playing:</p>
                                     <p className="text-4xl leading-10 font-bold text-white">{movie.title}</p>
@@ -68,7 +71,6 @@ export const NowPlaying = (props: Content) => {
                                         Watch Trailer
                                     </Button>
                                 </div>
-
                             </CarouselItem>
                         ))
                     }
