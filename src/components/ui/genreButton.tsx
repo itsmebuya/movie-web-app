@@ -18,7 +18,6 @@ import Link from "next/link"
 
 export const GenreButton = () => {
     const [genre, setGenre] = useState<Genres[]>([])
-    const [error, setError] = useState("");
 
     // const API_KEY = process.env.NEXT_PUBLIC_TMDB_API_KEY;
     // const TMDB_BASE_URL = process.env.NEXT_PUBLIC_TMDB_BASE_URL;
@@ -30,14 +29,18 @@ export const GenreButton = () => {
                 setGenre(fetchGenre.genres);
             } catch (error) {
                 if (error instanceof Error) {
-                    setError(error.message || "An unknown error occurred.");
+                    console.log(error.message || "An unknown error occurred.");
                 } else {
-                    setError("An unknown error occurred.");
+                    console.log("An unknown error occurred.");
                 }
             }
         }
         fetchGenres();
     }, [])
+//     const genreIds = [];
+//     const handleGenreClick = (id) =>{
+// genre
+//     }
 
     return (
         <div>
@@ -56,7 +59,7 @@ export const GenreButton = () => {
                     <div className=" flex flex-wrap ">
                         {genre.map((el) => (
                             <DropdownMenuItem key={el.id} className="w-fit">
-                                <Link href={`/genres/`} className="w-fit">
+                                <Link href={`/genres?genrelds=${el.id}`} className="w-fit">
                                     <Button className="py-0.5 px-2.5" >
                                         {el.name}
                                         <ChevronRight />

@@ -59,7 +59,7 @@ export const NowPlaying = (props: Content) => {
                                 </Link>
 
                                 <div className="flex flex-col absolute left-[200px] top-[150px] gap-1 w-[300px]">
-                                    <p className="text-base leading-6 text-white">Now Playing:</p>
+                                    <p className="text-base leading-6 text-white">{section}:</p>
                                     <p className="text-4xl leading-10 font-bold text-white">{movie.title}</p>
                                     <div className="flex gap-1 items-center">
                                         <StarIcon />

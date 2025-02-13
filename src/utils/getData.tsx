@@ -20,3 +20,8 @@ export const getMovieDuration = (minutes: number) => {
 export const getSectionTitle = (str: string) => {
     return str.split("_").map(word => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase()).join(" ");
 }
+
+export const getMovieYear = (str: string) => {
+    const [year, month, day ] = str.split("-");
+    return year
+}
