@@ -35,3 +35,8 @@ export const getSearchMovies = async ( searchValue: string) => {
     const {data} = await instance.get(`/search/movie?query=${searchValue}&language=en-US&api_key=${API_KEY}`);
     return data
 }
+
+export const getSimilarMovie = async (page: number, movieId: string) => {
+    const {data} = await instance.get(`/movie/${movieId}/similar?language=en-US&page=${page}&api_key=${API_KEY}`);
+    return data
+}

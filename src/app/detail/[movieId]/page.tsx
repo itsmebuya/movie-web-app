@@ -4,6 +4,7 @@ import { useParams } from "next/navigation"
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { DetailMovie } from "@/components/movieDetail";
+import { SimilarMovies } from "@/components/ui/similarMovies";
 
 
 export default function Category() {
@@ -17,6 +18,9 @@ export default function Category() {
             </div>
             <div className="flex justify-center items-center">
                 <DetailMovie movieId={params.movieId as string} />
+            </div>
+            <div className="flex justify-center items-center">
+                <SimilarMovies movieId={params.movieId as string} />
             </div>
             <Footer color={"#FAFAFA"} />
         </div>
